@@ -1,0 +1,22 @@
+STEP-1:
+    - Run docker-compose build
+STEP-2:
+    - RUN docker-compose up
+STEP-3: 
+    - Backend will not be able to connect to mysql.
+    - Open your cmd or terminal
+    - Database password is 'password'. Run the following:
+    docker exec -it mysql mysql -u root -p
+    Enter password:
+    ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+    SELECT plugin FROM mysql.user WHERE User = 'root';
+STEP-4:
+    - RUN docker-compose up again.
+STEP-5:
+    - Now you can open localhost:5000 and use the application.
+
+EXTRA-INFO: 
+You have predefined users: 
+1) username:owner1 password:1234567 role:Owner 
+2) username:employee1 passowrd:1234567 role:Employee
